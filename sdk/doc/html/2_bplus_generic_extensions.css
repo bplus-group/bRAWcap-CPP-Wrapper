@@ -1,0 +1,598 @@
+/* b-plus generic extensions/modifications based on doxygen-awesome.
+   Styles in here can be used for generated HTML output when using:
+
+   - md_preprocessor.py --> doxygen --> HTML API Documentation
+
+   - md_preprocessor.py --> pandoc --> HTML standalone manual
+     For manuals you should also use the "2_bplus_standalone_manual_extensions.css"
+
+  The styles require specific classes and IDs.
+  This makes it strongly dependent to the used build tools and templates like:
+
+   - md_preprocessor.py: capsulated in the same directory, you should never mix up the content of "doc_creator".
+
+   - doxygen-awesome: capsulated in the same directory, you should never mix up the content of "doc_creator".
+
+    - doxygen: tested with 1.9.5
+
+  If you experience any issues please check your tool and template versions.
+*/
+
+html {
+  /** b-plus usable colors */
+  --bplus-color-primary-blue: #144d70;
+  --bplus-color-primary-blue-dark: #142e3d;
+  --bplus-color-primary-blue-light: #146ca3;
+
+  --bplus-color-blue: #50ABCC;
+  --bplus-color-light-blue: #00BFDF;
+  --bplus-color-green: #95C11F;
+  --bplus-color-din-warning: #f6bd16;
+
+  --bplus-color-primary-grey: #999999;
+  --bplus-color-grey-1: #202020;
+  --bplus-color-grey-2: #404040;
+  --bplus-color-grey-3: #808080;
+  --bplus-color-grey-4: #B3B3B3;
+  --bplus-color-grey-5: #CCCCCC;
+  --bplus-color-grey-6: #E6E6E6;
+  --bplus-color-grey-7: #DDDDDD;
+
+  /* primary theme color. This will affect the entire websites color scheme: links, arrows, labels, ... */
+  --primary-color: var(--bplus-color-primary-blue);
+  --primary-dark-color: var(--bplus-color-primary-blue-dark);
+  --primary-light-color: var(--bplus-color-primary-blue-light);
+
+  /* page base colors */
+  --page-background-color: white;
+  --page-foreground-color: var(--bplus-color-grey-1);
+  --page-secondary-foreground-color: var(--bplus-color-grey-2);
+
+  /* color for all separators on the website: hr, borders, ... */
+  --separator-color: var(--bplus-color-grey-5);
+
+  /* border radius for all rounded components. Will affect many components, like dropdowns, memitems, codeblocks, ... */
+  --border-radius-large: 6px;
+  --border-radius-small: 2px;
+  --border-radius-medium: 4px;
+
+  /* default spacings. Most components reference these values for spacing, to provide uniform spacing on the page. */
+  --spacing-small: 5px;
+  --spacing-medium: 10px;
+  --spacing-large: 16px;
+
+  /* default box shadow used for raising an element above the normal content. Used in dropdowns, search result, ... */
+  --box-shadow: 0 2px 8px 0 rgba(0,0,0,.075);
+
+  --odd-color: rgba(0,0,0,.028);
+
+  /* font-families. will affect all text on the website
+   * font-family: the normal font for text, headlines, menus
+   * font-family-monospace: used for preformatted text in memtitle, code, fragments
+   */
+  --font-family: "Fira Sans", Arial;
+  --font-family-monospace: Consolas, SFMono-Regular, Menlo, Monaco, "Liberation Mono", "Courier New", monospace;
+
+  /* font sizes */
+  --page-font-size: 1rem;
+  --navigation-font-size: 1rem;
+  --toc-font-size: 0.9375rem;
+  --code-font-size: 0.8rem; /* affects code, fragment */
+  --title-font-size: 1.375rem;
+
+  /* content text properties. These only affect the page content, not the navigation or any other ui elements */
+  --content-line-height: 1.60rem;
+  /* The content is centered and constraint in it's width. To make the content fill the whole page, set the variable to auto.*/
+  --content-maxwidth: unset;
+  --table-line-height: 1.60rem;
+
+  /* colors for various content boxes: @warning, @note, @deprecated @bug */
+  --warning-color: transparent;
+  --warning-color-dark: var(--bplus-color-din-warning);
+  --warning-color-darker: var(--page-foreground-color);
+  --attention-color: transparent;
+  --attention-color-dark: var(--bplus-color-primary-blue-light);
+  --attention-color-darker: var(--page-foreground-color);
+  --note-color: transparent;
+  --note-color-dark: var(--bplus-color-primary-grey);
+  --note-color-darker: var(--page-foreground-color);
+  --todo-color: transparent;
+  --todo-color-dark: var(--bplus-color-light-blue);
+  --todo-color-darker: var(--page-foreground-color);
+  --deprecated-color: transparent;
+  --deprecated-color-dark: var(--bplus-color-blue);
+  --deprecated-color-darker: var(--page-foreground-color);
+  --bug-color: transparent;
+  --bug-color-dark: var(--bplus-color-light-blue);
+  --bug-color-darker: var(--page-foreground-color);
+  --invariant-color: transparent;
+  --invariant-color-dark: var(--bplus-color-green);
+  --invariant-color-darker: var(--page-foreground-color);
+
+  /* blockquote colors */
+  --blockquote-background: var(--bplus-color-grey-6);
+  --blockquote-foreground: var(--page-foreground-color);
+
+  /* table colors */
+  --tablehead-background: var(--bplus-color-grey-6);
+  --tablehead-foreground: var(--page-foreground-color);
+
+  --menu-focus-foreground: var(--page-background-color);
+  --menu-focus-background: var(--primary-color);
+  --menu-selected-background: rgba(0,0,0,.05);
+
+
+  --header-background: var(--page-background-color);
+  --header-foreground: var(--page-foreground-color);
+
+  /* searchbar colors */
+  --searchbar-background: var(--side-nav-background);
+  --searchbar-foreground: var(--page-foreground-color);
+
+  /* searchbar size
+   * (`searchbar-width` is only applied on screens >= 768px.
+   * on smaller screens the searchbar will always fill the entire screen width) */
+  --searchbar-height: 33px;
+  --searchbar-width: 210px;
+  --searchbar-border-radius: var(--searchbar-height);
+
+  /* code block colors */
+  --code-background: #F8F9FA;
+  --code-foreground: var(--page-foreground-color);
+
+  /* fragment colors */
+  --fragment-background: #F8F9FA;
+  --fragment-foreground: #37474F;
+  --fragment-keyword: #bb6bb2;
+  --fragment-keywordtype: #8258b3;
+  --fragment-keywordflow: #d67c3b;
+  --fragment-token: #438a59;
+  --fragment-comment: #969696;
+  --fragment-link: #5383d6;
+  --fragment-preprocessor: #46aaa5;
+  --fragment-linenumber-color: #797979;
+  --fragment-linenumber-background: #f4f4f5;
+  --fragment-linenumber-border: #e3e5e7;
+  --fragment-lineheight: 1.0rem;
+
+  /* height of an item in any tree / collapsible table */
+  --tree-item-height: 1.5rem;
+
+  --memname-font-size: var(--code-font-size);
+  --memtitle-font-size: 1.125rem;
+
+  --webkit-scrollbar-size: 7px;
+  --webkit-scrollbar-padding: 4px;
+  --webkit-scrollbar-color: var(--separator-color);
+
+  --symbol-warning: url("data:image/svg+xml;utf8,<svg width='18px' height='18px' viewBox='0 0 65.821 57.464' version='1.1' xmlns='http://www.w3.org/2000/svg'><path d='m65.583 54.83-31.147-53.952c-0.31827-0.54874-0.89993-0.87798-1.5255-0.87798-0.62556 0-1.2072 0.34022-1.5255 0.87798l-31.147 53.952c-0.31827 0.54874-0.31827 1.2182 0 1.756 0.31827 0.54874 0.89993 0.87798 1.5255 0.87798h62.293c0.62556 0 1.2072-0.34022 1.5255-0.87798 0.31827-0.54874 0.31827-1.2182 0-1.756z' stroke-width='.10975'/><path d='m4.8262 53.944 28.096-48.453 28.096 48.453z' fill='%23f6bd16' overflow='visible' stroke-width='.10975'/><path d='m37.08 47.7a4.1586 4.1586 0 1 1-8.3172 0 4.1586 4.1586 0 1 1 8.3172 0z' stroke='%23000' stroke-linecap='square' stroke-opacity='.4' stroke-width='.11197'/><path d='m32.922 18.504c-2.266 0-4.09 1.8627-4.09 4.1766l1.2093 14.631c0.23096 1.8926 0.42822 2.9648 1.2093 3.4691 0.51001 0.23236 1.0749 0.3646 1.6714 0.3646 0.59355 0 1.1561-0.13074 1.6642-0.36099 0.78546-0.50284 0.98505-1.5759 1.2165-3.4727l1.2093-14.631c0-2.3139-1.824-4.1766-4.09-4.1766z' stroke='%23000' stroke-linecap='square' stroke-width='.10975'/></svg>");
+
+  --symbol-attention: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='18px' height='18px' viewBox='0 0 10240 10240' fill='%23144E73'><path id='curve1' fill='%23144E73' d='M7360 8640l0 1280 -4480 0 0 -1280c0,-353 288,-640 640,-640l3200 0c353,0 640,287 640,640z'/><path id='curve0' fill='%23144E73' d='M5440 2787l-1930 483 -7 2c-554,150 -931,634 -943,1208l0 6 0 972c0,206 43,388 135,572l370 740c92,184 135,366 135,572l0 393c100,-36 208,-55 320,-55l320 0 0 -338c0,-306 -66,-584 -203,-858l-369 -740c-49,-96 -68,-178 -68,-286l0 -965c6,-291 191,-527 471,-603l1924 -482c289,-72 485,-323 485,-621l0 -1347c0,-265 215,-480 480,-480 265,0 480,215 480,480l11 2413c228,1 444,51 640,138l-11 -2554c-3,-617 -502,-1117 -1120,-1117 -618,0 -1120,502 -1120,1120l0 1347c0,0 0,0 0,0zm960 4893l320 0c112,0 220,19 320,55l0 -55c0,-57 6,-90 42,-134 88,-106 271,-225 382,-314l241 -193 0 -20c343,-330 615,-800 615,-1246l0 -320c0,-702 -568,-1274 -1268,-1280 -4,0 -8,0 -12,0l-1600 0c-352,0 -640,287 -640,640 0,706 574,1280 1280,1280l140 0 0 0 180 0c176,0 320,-144 320,-320l0 0c0,-176 -144,-320 -320,-320l-320 0c-352,0 -640,-288 -640,-640l1600 0c353,0 640,287 640,640l0 320c0,320 -317,757 -640,960l-547 547c-58,109 -93,238 -93,400z'/></svg>");
+
+  --symbol-note: url("data:image/svg+xml;utf8,<svg version='1.1' width='18px' height='18px' viewBox='0 0 1024 1024' xmlns='http://www.w3.org/2000/svg' style='enable-background:new 0 0 1024 1024;' fill='%23999999'><path id='curve3' class='st0' d='M619,203L339.7,482.3l-84.2,223.5c-4.7,12.3-2.3,25.4,7,34.7c9.3,9.3,22.4,11.6,34.7,7l223.5-84.2 L800,384L619,203z M495.9,638.5L364.4,688L315,638.6l49.5-131.5L495.9,638.5z M641.6,316.1L641.6,316.1c12.5,12.5,12.5,32.8,0,45.3 L498.1,504.9c-12.5,12.5-32.8,12.5-45.3,0l0,0c-12.4-12.5-12.4-32.8,0-45.2l143.6-143.6C608.8,303.7,629.2,303.7,641.6,316.1z'/><path id='curve2' class='st0' d='M935.8,157.7l-90.5-90.5c-25-24.9-65.6-24.9-90.6,0l-90.5,90.5l181.1,181l90.5-90.5 C960.7,223.3,960.7,182.6,935.8,157.7z M822.6,135.1c12.5,12.5,12.5,32.8,0,45.3s-32.7,12.5-45.2,0s-12.5-32.8,0-45.3 S810.1,122.6,822.6,135.1z'/><path id='curve1' class='st0' d='M832,397.3V896c0,35.3-28.7,64-64,64H128c-35.3,0-64-28.7-64-64V224c0-35.3,28.7-64,64-64v64v0.1 l0,0v671.8c0,0.1,0,0.1,0.1,0.1h639.8c0.1,0,0.1,0,0.1-0.1V461.3L832,397.3z'/><path id='curve0' class='st0' d='M672,64h32c2.7,0,5.3,0.3,7.8,1L640,136.7V96C640,78.4,654.4,64,672,64z M192,64h32 c17.6,0,32,14.4,32,32v128c0,17.6-14.4,32-32,32h-32c-17.6,0-32-14.4-32-32V96C160,78.4,174.4,64,192,64z M352,64h32 c17.6,0,32,14.4,32,32v128c0,17.6-14.4,32-32,32h-32c-17.6,0-32-14.4-32-32V96C320,78.4,334.4,64,352,64z M512,64h32 c17.6,0,32,14.4,32,32v104.7L520.7,256H512c-17.6,0-32-14.4-32-32V96C480,78.4,494.4,64,512,64z'/></svg>");
+
+  --symbol-tip: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='18px' height='18px'  viewBox='0 0 10240 10240' fill='%2395C11F'><path id='curve1' fill='%2395C11F' d='M6720 7533l0 1427c0,353 -287,640 -640,640l0 0 0 0 0 0c0,176 -216,320 -480,320l-960 0c-264,0 -480,-144 -480,-320l0 0 0 0 0 0c-353,0 -640,-287 -640,-640l0 -1427c139,49 286,78 427,98 382,53 787,49 1173,49 386,0 791,4 1173,-49 141,-20 288,-49 427,-98z'/><path id='curve0' fill='%2395C11F' d='M5120 320c1624,0 3200,1165 3200,2880 0,1600 -1280,2240 -1280,3200l0 320c0,640 -960,640 -1920,640 -960,0 -1920,0 -1920,-640l0 -320c0,-960 -1280,-1600 -1280,-3200 0,-1711 1572,-2880 3200,-2880zm642 715c-211,-49 -427,-75 -642,-75 -1266,0 -2560,884 -2560,2240 0,303 64,569 164,813 35,86 97,146 184,179 87,32 173,28 256,-14 149,-75 216,-252 153,-407 -73,-177 -117,-363 -117,-571 0,-994 1016,-1600 1920,-1600 164,0 331,20 496,58 146,35 292,-34 359,-168l0 -1c46,-90 47,-187 4,-279 -43,-91 -119,-152 -217,-175z'/></svg>");
+
+  --symbol-task: url("data:image/svg+xml;utf8,<svg id='task' width='8' height='8' version='1.1' viewBox='0 0 44.458 65.162' xmlns='http://www.w3.org/2000/svg'><path d='m51.35 33.009-57.877-30.215v60.162z' fill='%2350abcc' stroke='%2350abcc' stroke-linecap='round' stroke-linejoin='round' stroke-width='5' style='paint-order:normal'/></svg>");
+
+  --symbol-list: url("data:image/svg+xml;utf8,<svg id='list' width='8' height='8' version='1.1' viewBox='0 0 44.458 65.162' xmlns='http://www.w3.org/2000/svg'><rect x='-4.9369' y='4.125' width='56.0' height='56.0' fill='%2350abcc' stroke='%2350abcc' stroke-linejoin='round' stroke-width='5.94'/></svg>");
+
+  --symbol-reference: url("data:image/svg+xml;utf8,<svg id='task' width='10' height='10' version='1.1' viewBox='0 0 44.458 65.162' xmlns='http://www.w3.org/2000/svg'><path d='m25.376 34.004-32.978-17.216v34.28z' fill='%2350abcc' stroke='%2350abcc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2.849' style='paint-order:normal'/><path d='m51.877 33.76-32.978-17.216v34.28z' fill='%2350abcc' stroke='%2350abcc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2.849' style='paint-order:normal'/></svg>");
+
+  --symbol-result: "✓  ";
+}
+
+@media screen and (max-width: 767px) {
+  html {
+      --page-font-size: 1rem;
+      --navigation-font-size: rem;
+      --toc-font-size: 0.9375rem;
+      --code-font-size: 0.9375rem; /* affects code, fragment */
+      --title-font-size: 1.375rem;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  html:not(.light-mode) {
+      color-scheme: dark;
+
+      --primary-color: #1982d2;
+      --primary-dark-color: #86a9c4;
+      --primary-light-color: #4779ac;
+
+      --box-shadow: 0 2px 8px 0 rgba(0,0,0,.35);
+
+      --odd-color: rgba(100,100,100,.06);
+
+      --menu-selected-background: rgba(0,0,0,.4);
+
+      --page-background-color: #1C1D1F;
+      --page-foreground-color: #d2dbde;
+      --page-secondary-foreground-color: #859399;
+      --separator-color: #38393b;
+      --side-nav-background: #252628;
+
+      --code-background: #2a2c2f;
+
+      --tablehead-background: #2a2c2f;
+
+      --blockquote-background: #222325;
+      --blockquote-foreground: #7e8c92;
+
+      --warning-color: transparent;
+      --warning-color-dark: var(--bplus-color-din-warning);
+      --warning-color-darker: var(--page-foreground-color);
+      --attention-color: transparent;
+      --attention-color-dark: var(--bplus-color-primary-blue-light);
+      --attention-color-darker: var(--page-foreground-color);
+      --note-color: transparent;
+      --note-color-dark: var(--bplus-color-primary-grey);
+      --note-color-darker: var(--page-foreground-color);
+      --todo-color: transparent;
+      --todo-color-dark: var(--bplus-color-light-blue);
+      --todo-color-darker: var(--page-foreground-color);
+      --deprecated-color: transparent;
+      --deprecated-color-dark: var(--bplus-color-blue);
+      --deprecated-color-darker: var(--page-foreground-color);
+      --bug-color: transparent;
+      --bug-color-dark: var(--bplus-color-light-blue);
+      --bug-color-darker: var(--page-foreground-color);
+      --invariant-color: transparent;
+      --invariant-color-dark: var(--bplus-color-green);
+      --invariant-color-darker: var(--page-foreground-color);
+
+      --fragment-background: #282c34;
+      --fragment-foreground: #dbe4eb;
+      --fragment-keyword: #cc99cd;
+      --fragment-keywordtype: #ab99cd;
+      --fragment-keywordflow: #e08000;
+      --fragment-token: #7ec699;
+      --fragment-comment: #999999;
+      --fragment-link: #98c0e3;
+      --fragment-preprocessor: #65cabe;
+      --fragment-linenumber-color: #cccccc;
+      --fragment-linenumber-background: #35393c;
+      --fragment-linenumber-border: #1f1f1f;
+  }
+}
+
+/* dark mode variables are defined twice,
+   to support both the dark-mode without and with doxygen-awesome-darkmode-toggle.js
+ */
+html.dark-mode {
+  color-scheme: dark;
+
+  --primary-color: #1982d2;
+  --primary-dark-color: #86a9c4;
+  --primary-light-color: #4779ac;
+
+  --box-shadow: 0 2px 8px 0 rgba(0,0,0,.30);
+
+  --odd-color: rgba(100,100,100,.06);
+
+  --menu-selected-background: rgba(0,0,0,.4);
+
+  --page-background-color: #1C1D1F;
+  --page-foreground-color: #d2dbde;
+  --page-secondary-foreground-color: #859399;
+  --separator-color: #38393b;
+  --side-nav-background: #252628;
+
+  --code-background: #2a2c2f;
+
+  --tablehead-background: #2a2c2f;
+
+  --blockquote-background: #222325;
+  --blockquote-foreground: #7e8c92;
+
+  --warning-color: transparent;
+  --warning-color-dark: var(--bplus-color-din-warning);
+  --warning-color-darker: var(--page-foreground-color);
+  --attention-color: transparent;
+  --attention-color-dark: var(--bplus-color-primary-blue-light);
+  --attention-color-darker: var(--page-foreground-color);
+  --note-color: transparent;
+  --note-color-dark: var(--bplus-color-primary-grey);
+  --note-color-darker: var(--page-foreground-color);
+  --todo-color: transparent;
+  --todo-color-dark: var(--bplus-color-light-blue);
+  --todo-color-darker: var(--page-foreground-color);
+  --deprecated-color: transparent;
+  --deprecated-color-dark: var(--bplus-color-blue);
+  --deprecated-color-darker: var(--page-foreground-color);
+  --bug-color: transparent;
+  --bug-color-dark: var(--bplus-color-light-blue);
+  --bug-color-darker: var(--page-foreground-color);
+  --invariant-color: transparent;
+  --invariant-color-dark: var(--bplus-color-green);
+  --invariant-color-darker: var(--page-foreground-color);
+
+  --fragment-background: #282c34;
+  --fragment-foreground: #dbe4eb;
+  --fragment-keyword: #cc99cd;
+  --fragment-keywordtype: #ab99cd;
+  --fragment-keywordflow: #e08000;
+  --fragment-token: #7ec699;
+  --fragment-comment: #999999;
+  --fragment-link: #98c0e3;
+  --fragment-preprocessor: #65cabe;
+  --fragment-linenumber-color: #cccccc;
+  --fragment-linenumber-background: #35393c;
+  --fragment-linenumber-border: #1f1f1f;
+}
+
+/**********************************************************************/
+/* GENERIC MODIFICATIONS */
+/* Make header stick to top */
+#top {
+  justify-content: flex-start;
+  position: sticky;
+  left: 0;
+  right: 0;
+  top: 0;
+  margin-left: inherit;
+  margin-right: inherit;
+  z-index: 1
+}
+/* Apply content line height for everything... */
+div.contents, div.header .title  { line-height: var(--content-line-height); }
+body, table, div, p, dl { line-height: var(--content-line-height); }
+/* Increase margin for table ICON´s - doxygen awesome is struggling with our % font-sizes here... */
+.icona { margin-right: var(--spacing-large); }
+
+/**********************************************************************/
+/* BLOCKQUOTE */
+/* Modify spacing for blockquote */
+blockquote {
+  margin: 10px var(--spacing-small) 10px var(--spacing-small);
+  padding: var(--spacing-small) var(--spacing-medium);
+}
+/* Remove " from blockquote corners */
+blockquote::before { content: ""; }
+blockquote::after { content: ""; }
+
+/**********************************************************************/
+/* LINKS */
+/* Don´t underline always */
+a { text-decoration: none; }
+/* Underline only if hovering over a link */
+a:hover{ text-decoration: underline;}
+/* Color links different - because our primary color is to close to black... */
+a:link, a:visited, a:hover, a:focus, a:active { color: var(--bplus-color-primary-blue-light) !important; }
+
+/**********************************************************************/
+/* ADMONITIONS AND DESCRIPTION LISTS */
+/* Remove border radius from all description lists */
+dl.warning, dl.attention, dl.note, dl.deprecated, dl.bug,
+dl.invariant, dl.pre, dl.post, dl.todo, dl.remark { border-radius: 0;}
+/* Add list item for our specific admonitions */
+dl.warning dt, dl.attention dt, dl.note dt, dl.invariant dt{
+  display:list-item;
+  font-weight: normal;
+  margin-left:2em;
+  color: var(--page-foreground-color)
+}
+/* Different styling for attentions */
+dl.attention { border-left: 8px solid var(--attention-color-dark); }
+/* Apply the icons depending on type */
+dl.warning dt { list-style-image: var(--symbol-warning); }
+dl.attention dt { list-style-image: var(--symbol-attention); }
+dl.note dt { list-style-image: var(--symbol-note); }
+dl.invariant dt { list-style-image: var(--symbol-tip); }
+
+/**********************************************************************/
+/* IMAGES */
+/* Do not invert image colors for centered images in dark mode */
+@media (prefers-color-scheme: dark) { html:not(.light-mode) div.contents center img{ filter: unset; } }
+html.dark-mode div.contents center img { filter: unset; }
+/* Add border around pictures to increase visibility */
+div.figure img { border: 3px var(--bplus-color-grey-7) solid; }
+
+/**********************************************************************/
+/* LISTS */
+/* Decrease indentation */
+ul, ol { padding-inline-start: 20px; }
+/* List */
+ul li{ list-style-image: var(--symbol-list); list-style-type: none; }
+ul ul li { list-style-type: "– "; list-style-image: none; }
+/* Task */
+div.task_list ul li { list-style-image: var(--symbol-task); list-style-type: none; }
+div.task_list ul ul li { list-style-type: "– "; list-style-image: none; }
+/* Reference */
+div.reference_list ul li { list-style-image: var(--symbol-reference); list-style-type: none; }
+div.reference_list ul ul li { list-style-type: "– "; list-style-image: none; }
+/* Result */
+div.result_list ul li::marker { content: var(--symbol-result); color: #50ABCC; font-weight: bold; }
+div.result_list ul ul li { list-style-type: "– "; list-style-image: none; }
+
+/**********************************************************************/
+/* TABLES */
+div.table-manual p { margin: 0; }
+div.table-manual { overflow: auto; }
+table.fieldtable, table.markdowntable {
+  display: inline-block;
+  box-shadow: none;
+}
+table.fieldtable tbody {
+  display: inline-block;
+  border: none;
+  box-shadow: 0 0 0 1px var(--separator-color);
+  border-radius: var(--border-radius-large);
+}
+.contents table tbody::-webkit-scrollbar,
+.contents table td.memItemRight::-webkit-scrollbar
+{
+    background: transparent;
+    width: calc(var(--webkit-scrollbar-size) + var(--webkit-scrollbar-padding) + var(--webkit-scrollbar-padding));
+    height: calc(var(--webkit-scrollbar-size) + var(--webkit-scrollbar-padding) + var(--webkit-scrollbar-padding));
+}
+.contents table tbody::-webkit-scrollbar-track,
+.contents table td.memItemRight::-webkit-scrollbar-track
+{
+  background: transparent;
+}
+.contents table tbody:hover::-webkit-scrollbar-thumb,
+.contents table td.memItemRight:hover::-webkit-scrollbar-thumb
+{
+    background-color: var(--webkit-scrollbar-color);
+}
+.contents table tbody::-webkit-scrollbar-thumb,
+.contents table td.memItemRight::-webkit-scrollbar-thumb
+{
+    background-color: transparent;
+    border: var(--webkit-scrollbar-padding) solid transparent;
+    border-radius: calc(var(--webkit-scrollbar-padding) + var(--webkit-scrollbar-padding));
+    background-clip: padding-box;
+}
+/* Required to allow horizontal scrolling on mobile devices */
+@media screen and (max-width: 767px) {
+  table.fieldtable {
+    display: inline-block;
+    max-width: 100%;
+  }
+  table.fieldtable tbody {
+    overflow-x: overlay;
+    display: inline-block;
+    max-width: 100%;
+    border: none;
+    box-shadow: 0 0 0 1px var(--separator-color);
+    border-radius: var(--border-radius-large);
+    scrollbar-width: thin;
+  }
+  table.memberdecls .memItemLeft, table.memberdecls .memItemRight, table.memberdecls .mdescLeft,
+  table.memberdecls .mdescRight, table.memberdecls .memTemplItemLeft, table.memberdecls .memTemplItemRight,
+  table.memberdecls .memTemplParams {
+    max-width: var(--content-maxwidth);
+  }
+
+  table.memberdecls .memItemLeft,
+  table.memberdecls .memTemplItemLeft,
+  table.memberdecls .memItemRight,
+  table.memberdecls .memTemplItemRight {
+    overflow: auto;
+    display: block;
+    margin: inherit;
+  }
+  table.memberdecls .memItemRight, table.memberdecls .mdescRight, table.memberdecls .memTemplItemRight {
+    padding-right: var(--spacing-medium);
+  }
+
+}
+/* Set margin for tables (like modules and files) to the same value used for larger screens */
+@media screen and (max-width: 767px) {
+  div.directory {
+      margin-left: 0;
+      margin-right: 0;
+  }
+}
+/* Content of member descriptions is broken if we don´t change the display value here */
+@media screen and (max-width: 767px) {
+  table.memberdecls .mdescLeft,
+  table.memberdecls .mdescRight,
+  table.memberdecls .memTemplParams {
+      display: inline-block;
+      margin: inherit;
+      margin-top: 4px;
+      margin-bottom: 4px;
+      padding: inherit;
+  }
+}
+/**********************************************************************/
+/* Code blocks */
+@media screen and (max-width: 767px) {
+  .contents > div.fragment,
+  .textblock > div.fragment,
+  .textblock > pre.fragment,
+  .contents > .doxygen-awesome-fragment-wrapper > div.fragment,
+  .textblock > .doxygen-awesome-fragment-wrapper > div.fragment,
+  .textblock > .doxygen-awesome-fragment-wrapper > pre.fragment {
+       margin: var(--spacing-medium) 0;
+  }
+
+  pre.fragment {
+    border-left: 0;
+  }
+}
+
+div.fragment pre.fragment {
+  border: none;
+}
+
+code.fragment {
+  overflow: inherit;
+  background: inherit;
+  color: inherit;
+  border: none;
+  white-space: pre;
+  word-wrap: initial;
+  padding: unset;
+}
+
+code.fragment {
+  overflow: inherit;
+  background: inherit;
+  color: inherit;
+  border: none;
+  white-space: pre;
+  word-wrap: initial;
+}
+
+code span.er {
+    color: inherit;
+    font-weight: normal;
+}
+/**********************************************************************/
+/* TABLE OF CONTENTS */
+/* Remove list symbol */
+ul.figure-toc li, ul.section-toc li, ul.table-toc li { list-style-type: none; list-style-image: none; }
+
+/**********************************************************************/
+/* FIGURE/TABLE DESCRIPTIONS */
+figcaption.figure-desc, span.table-desc { font-size: 0.9rem; font-style: italic; }
+
+/**********************************************************************/
+/* TOP BUTTON */
+#back-to-top {
+  display: none;
+  position: fixed;
+  bottom: 15px;
+  right: 15px;
+  width: 45px;
+  height: 45px;
+  z-index: 99;
+  font-size: 112.5%;
+  border: none;
+  outline: none;
+  background-color: var(--bplus-color-green);
+  color: white;
+  cursor: pointer;
+  padding: 2px;
+  border-radius: 4px;
+}
+#back-to-top:hover { background-color: var(--bplus-color-grey-3); }
+
+/**********************************************************************/
+/* SCREEN MODE */
+@media screen {
+  /* Do not show footer on screen */
+  div.print-footer { display: none; }
+}
+
+/**********************************************************************/
+/* PRINT MODE */
+@media print {
+  /* Add margins to each page */
+  @page { margin-left: 1cm; margin-right: 1cm; margin-top: 2cm; margin-bottom: 1cm; }
+  /* Improve colors and page breaks */
+  body { -webkit-print-color-adjust: exact; print-color-adjust: exact; widows: 4; orphans: 4; }
+  /* Always break page after title */
+  div.title-page { page-break-after: always; }
+  /* Avoid page breaks in blockquote, admonitions, figures, tables, list of figures and list of tables */
+  blockquote, dl.section, div.figure, div.table-manual, ul.figure-toc, ul.table-toc { page-break-inside: avoid; }
+  /* Handle page breaks for headings */
+  h1, h2, h3, h4, h5, h6 { page-break-after: avoid; page-break-inside: avoid; page-break-before: auto; }
+  /* Apply footer to prints */
+  div.print-footer { position: fixed; bottom: 0; right: 0; z-index: 1000; font-size: 70%; }
+  /* Don´t show top button in prints */
+  #back-to-top { visibility: hidden; }
+}
