@@ -127,18 +127,18 @@ public:
     return minPackets;
   }
   
-  inline void ReceiveTimeoutSet(const brawcap_rx_timeout_t timeout)
+  inline void ReceiveTimeoutMillisecondsSet(const brawcap_rx_timeout_t timeout_ms)
   {
-    brawcap_status_t status = brawcap_rx_timeout_set(BRAWcapHandle::Native().get(), timeout);
+    brawcap_status_t status = brawcap_rx_timeout_set(BRAWcapHandle::Native().get(), timeout_ms);
     assert(!BRAWCAP_ERROR(status));
   }
   
-  inline brawcap_rx_timeout_t ReceiveTimeout()
+  inline brawcap_rx_timeout_t ReceiveTimeoutMilliseconds()
   {
-    brawcap_rx_timeout_t timeout = 0;
-    brawcap_status_t status = brawcap_rx_timeout_get(BRAWcapHandle::Native().get(), &timeout);
+    brawcap_rx_timeout_t timeout_ms = 0;
+    brawcap_status_t status = brawcap_rx_timeout_get(BRAWcapHandle::Native().get(), &timeout_ms);
     assert(!BRAWCAP_ERROR(status));
-    return timeout;
+    return timeout_ms;
   }
   
   inline void ReceiveFilterSet(const BRAWcapFilter& filter)
@@ -155,7 +155,7 @@ public:
     return filter;
   }
   
-  inline void ReceivePromiscuousSet(bool enable)
+  inline void ReceivePromiscuousSet(const bool enable)
   {
     brawcap_status_t status = brawcap_rx_promiscuous_mode_set(BRAWcapHandle::Native().get(), enable);
     assert(!BRAWCAP_ERROR(status));
@@ -187,7 +187,7 @@ public:
     return caps;
   }
   
-  inline void ReceiveTimestampModeSet(brawcap_timestamp_mode_t mode)
+  inline void ReceiveTimestampModeSet(const brawcap_timestamp_mode_t mode)
   {
     brawcap_status_t status = brawcap_rx_timestamp_mode_set(BRAWcapHandle::Native().get(), mode);
     assert(!BRAWCAP_ERROR(status));
@@ -201,7 +201,7 @@ public:
     return mode;
   }
   
-  inline void ReceiveVlanTaggingSet(bool enable)
+  inline void ReceiveVlanTaggingSet(const bool enable)
   {
     brawcap_status_t status = brawcap_rx_vlan_tagging_set(BRAWcapHandle::Native().get(), enable);
     assert(!BRAWCAP_ERROR(status));
@@ -215,7 +215,7 @@ public:
     return static_cast<bool>(enabled);
   }
   
-  inline void ReceiveDriverQueueSizeSet(brawcap_queue_size_t size)
+  inline void ReceiveDriverQueueSizeSet(const brawcap_queue_size_t size)
   {
     brawcap_status_t status = brawcap_rx_driver_queue_size_set(BRAWcapHandle::Native().get(), size);
     assert(!BRAWCAP_ERROR(status));
@@ -230,7 +230,7 @@ public:
   }
   
 private:
-  inline static void ReceiveBufferCompleteInternal(brawcap_handle_t* pHandle, const brawcap_status_t status,
+  inline static void ReceiveBufferCompleteInternal(brawcap_handle_t* const pHandle, const brawcap_status_t status,
     brawcap_buffer_t* const pBuffer, void* pUser)
   {
     BRAWcapReceive* pReceive = reinterpret_cast<BRAWcapReceive*>(pUser);

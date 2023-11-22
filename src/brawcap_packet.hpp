@@ -145,43 +145,43 @@ public:
   inline brawcap_timestamp_resolution_ns_t TimestampResolutionNs()
   {
     brawcap_packet_t* pPacket = ResolvePacket();
-    return BRAWcapTimestamp::ResolutionNs();
+    return BRAWcapTimestamp::ResolutionNanoseconds();
   }
   
   inline void TimestampNs(uint64_t& seconds, uint32_t& nanoseconds)
   {
     brawcap_packet_t* pPacket = ResolvePacket();
-    BRAWcapTimestamp::Ns(seconds, nanoseconds);
+    BRAWcapTimestamp::Nanoseconds(seconds, nanoseconds);
   }
   
   inline void TimestampNsSet(const uint64_t seconds, const uint32_t nanoseconds)
   {
     brawcap_packet_t* pPacket = ResolvePacket();
-    BRAWcapTimestamp::NsSet(seconds, nanoseconds);
+    BRAWcapTimestamp::NanosecondsSet(seconds, nanoseconds);
   }
   
   inline void TimestampUs(uint64_t& seconds, uint32_t& microseconds)
   {
     brawcap_packet_t* pPacket = ResolvePacket();
-    BRAWcapTimestamp::Us(seconds, microseconds);
+    BRAWcapTimestamp::Microseconds(seconds, microseconds);
   }
   
   inline void TimestampUsSet(const uint64_t seconds, const uint32_t microseconds)
   {
     brawcap_packet_t* pPacket = ResolvePacket();
-    BRAWcapTimestamp::UsSet(seconds, microseconds);
+    BRAWcapTimestamp::MicrosecondsSet(seconds, microseconds);
   }
   
   inline void TimestampMs(uint64_t& seconds, uint32_t& milliseconds)
   {
     brawcap_packet_t* pPacket = ResolvePacket();
-    BRAWcapTimestamp::Ms(seconds, milliseconds);
+    BRAWcapTimestamp::Milliseconds(seconds, milliseconds);
   }
   
   inline void TimestampMsSet(const uint64_t seconds, const uint32_t milliseconds)
   {
     brawcap_packet_t* pPacket = ResolvePacket();
-    BRAWcapTimestamp::MsSet(seconds, milliseconds);
+    BRAWcapTimestamp::MillisecondsSet(seconds, milliseconds);
   }
   
 private:

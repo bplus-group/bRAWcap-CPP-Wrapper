@@ -86,7 +86,7 @@ public:
     return static_cast<bool>(activated);
   }
   
-  inline void Indicate(bool enable)
+  inline void Indicate(const bool enable)
   {
     brawcap_status_t status = brawcap_filter_indicate_set(m_pFilter.get(), enable);
     assert(!BRAWCAP_ERROR(status));
@@ -169,7 +169,7 @@ public:
     memcpy(m_byteMask, mask, sizeof(brawcap_filter_mask_array_t));
   }
   
-  inline void ByteFilterByteMaskGet(brawcap_filter_mask_array_t mask)
+  inline void ByteFilterByteMask(brawcap_filter_mask_array_t mask)
   {
     brawcap_status_t status = brawcap_filter_mask_get(m_pFilter.get(), &m_byteOffset, &m_byteLength, &m_byteMask,
                                                       &m_byteIgnore);
@@ -185,7 +185,7 @@ public:
     memcpy(m_byteIgnore, ignoreBits, sizeof(brawcap_filter_ignore_bits_array_t));
   }
   
-  inline void ByteFilterIgnoreBitsGet(brawcap_filter_ignore_bits_array_t ignoreBits)
+  inline void ByteFilterIgnoreBits(brawcap_filter_ignore_bits_array_t ignoreBits)
   {
     brawcap_status_t status = brawcap_filter_mask_get(m_pFilter.get(), &m_byteOffset, &m_byteLength, &m_byteMask,
                                                       &m_byteIgnore);

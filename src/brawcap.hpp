@@ -54,7 +54,7 @@ public:
     return apiVersion;
   }
   
-  inline static void LoglevelSet(const brawcap_log_type_t type, const brawcap_log_level_t level, const char* key)
+  inline static void LogLevelSet(const brawcap_log_type_t type, const brawcap_log_level_t level, const char* key)
   {
     brawcap_status_t status = brawcap_log_level_set(type, level, key);
     assert(!BRAWCAP_ERROR(status));

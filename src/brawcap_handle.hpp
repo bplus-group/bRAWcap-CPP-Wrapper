@@ -57,13 +57,13 @@ public:
     return driverVersion;
   }
   
-  inline void StatsReceive(brawcap_stats_rx_t& stats) const
+  inline void StatsReceiveStatistics(brawcap_stats_rx_t& stats) const
   {
     brawcap_status_t status = brawcap_stats_rx(m_pHandle.get(), &stats);
     assert(!BRAWCAP_ERROR(status));
   }
   
-  inline void StatsTransmit(brawcap_stats_tx_t& stats) const
+  inline void StatsTransmitStatistics(brawcap_stats_tx_t& stats) const
   {
     brawcap_status_t status = brawcap_stats_tx(m_pHandle.get(), &stats);
     assert(!BRAWCAP_ERROR(status));

@@ -40,7 +40,7 @@
 
 class BRAWcapTransmit : virtual public BRAWcapAdapter, virtual public BRAWcapHandle
 {
-  using TxBufferCompleteCallback = void(*)(BRAWcapBuffer& buffer, brawcap_status_t status, void* pUser);
+  using TransmitBufferCompleteCallback = void(*)(BRAWcapBuffer& buffer, brawcap_status_t status, void* pUser);
 
 public:
   inline BRAWcapTransmit(const std::string& name)
@@ -50,14 +50,14 @@ public:
   inline ~BRAWcapTransmit()
   { }
   
-  inline bool TransmitSinglePacket(BRAWcapPacket& packet)
+  inline bool TransmitSinglePacket(const BRAWcapPacket& packet)
   {
     brawcap_status_t status = brawcap_tx_packet(BRAWcapHandle::Native().get(), packet.ResolvePacket());
     assert(!BRAWCAP_ERROR(status));
     return BRAWCAP_SUCCESS(status) || BRAWCAP_INFO(status);
   }
   
-  inline bool TransmitStart(TxBufferCompleteCallback callback, void* pUser)
+  inline bool TransmitStart(TransmitBufferCompleteCallback callback, void* pUser)
   {
     assert(callback);
     m_callback = callback;
@@ -121,7 +121,7 @@ public:
   }
   
 private:
-  inline static void TransmitBufferCompleteInternal(brawcap_handle_t* pHandle, const brawcap_status_t status,
+  inline static void TransmitBufferCompleteInternal(brawcap_handle_t* const pHandle, const brawcap_status_t status,
     brawcap_buffer_t* const pBuffer, void* pUser)
   {
     BRAWcapTransmit* pTransmit = reinterpret_cast<BRAWcapTransmit*>(pUser);
@@ -143,7 +143,7 @@ private:
 private:
   std::mutex m_bufferLock;
   std::vector<BRAWcapBuffer> m_buffers;
-  TxBufferCompleteCallback m_callback;
+  TransmitBufferCompleteCallback m_callback;
   void* m_pUser;
 };
 

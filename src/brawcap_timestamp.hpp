@@ -45,7 +45,7 @@ protected:
     return mode;
   }
   
-  inline brawcap_timestamp_resolution_ns_t ResolutionNs()
+  inline brawcap_timestamp_resolution_ns_t ResolutionNanoseconds()
   {
     assert(m_pTimestamp);
     brawcap_timestamp_resolution_ns_t resolution;
@@ -54,42 +54,42 @@ protected:
     return resolution;
   }
   
-  inline void Ns(uint64_t& seconds, uint32_t& nanoseconds)
+  inline void Nanoseconds(uint64_t& seconds, uint32_t& nanoseconds)
   {
     assert(m_pTimestamp);
     brawcap_status_t status = brawcap_timestamp_value_ns_get(m_pTimestamp, &seconds, &nanoseconds);
     assert(!BRAWCAP_ERROR(status));
   }
   
-  inline void NsSet(const uint64_t seconds, const uint32_t nanoseconds)
+  inline void NanosecondsSet(const uint64_t seconds, const uint32_t nanoseconds)
   {
     assert(m_pTimestamp);
     brawcap_status_t status = brawcap_timestamp_value_ns_set(m_pTimestamp, seconds, nanoseconds);
     assert(!BRAWCAP_ERROR(status));
   }
   
-  inline void Us(uint64_t& seconds, uint32_t& microseconds)
+  inline void Microseconds(uint64_t& seconds, uint32_t& microseconds)
   {
     assert(m_pTimestamp);
     brawcap_status_t status = brawcap_timestamp_value_us_get(m_pTimestamp, &seconds, &microseconds);
     assert(!BRAWCAP_ERROR(status));
   }
   
-  inline void UsSet(const uint64_t seconds, const uint32_t microseconds)
+  inline void MicrosecondsSet(const uint64_t seconds, const uint32_t microseconds)
   {
     assert(m_pTimestamp);
     brawcap_status_t status = brawcap_timestamp_value_us_set(m_pTimestamp, seconds, microseconds);
     assert(!BRAWCAP_ERROR(status));
   }
   
-  inline void Ms(uint64_t& seconds, uint32_t& milliseconds)
+  inline void Milliseconds(uint64_t& seconds, uint32_t& milliseconds)
   {
     assert(m_pTimestamp);
     brawcap_status_t status = brawcap_timestamp_value_ms_get(m_pTimestamp, &seconds, &milliseconds);
     assert(!BRAWCAP_ERROR(status));
   }
   
-  inline void MsSet(const uint64_t seconds, const uint32_t milliseconds)
+  inline void MillisecondsSet(const uint64_t seconds, const uint32_t milliseconds)
   {
     assert(m_pTimestamp);
     brawcap_status_t status = brawcap_timestamp_value_ms_set(m_pTimestamp, seconds, milliseconds);
