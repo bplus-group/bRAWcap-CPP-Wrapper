@@ -3,10 +3,13 @@
 This project contains a C++ wrapper for the bRAWcap C API.
 bRAWcap is a high performance network driver for Windows which allows to send and receive raw Ethernet packets
 from any 802.3 Ethernet adapter supported by Windows.
+
 Its features and functionality is similar to those available with winpcap (based on libpcap).
 But the API is not yet available with a libpcap interface - this may be added soon.
+
 For now it is required to directly use the bRAWcap C API and for easier integration and object oriented programming
 b-plus provides this C++ wrapper which is open source available to everybody and free to use.
+
 You are allowed to also extend the C++ wrapper to your own needs - without guarantee.
 If you find any improvement or issue in the C++ wrapper we would appreciate your feedback (e.g. via issue request).
 
@@ -48,5 +51,6 @@ header to get full access to all features.
 It is recommended to always create one **BRAWcap** instance for each connection to a adapter/interface.
 This instance provides access to all features such as sending and receiving raw Ethernet packets
 to/from the specified adapter.
+
 If instead only receiving or transmitting is required it is also possible to directly create a instance of
 **BRAWcapReceive** or **BRAWcapTransmit**.
