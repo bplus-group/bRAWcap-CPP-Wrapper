@@ -38,7 +38,7 @@ industry/automotive environments.
 The C++ wrapper code is based on C++17 features, therefore it is recommended to use a compiler
 which supports at least C++17, otherwise you may get compiler errors due to the C++ wrapper.
 
-We always check builds with MSVC 2017 compiler (part of Windows SDK 1809).
+We always check builds with MSVC 2017 compiler (part of [Windows SDK](https://developer.microsoft.com/de-de/windows/downloads/sdk-archive/) 1809).
 
 It is also necessary to add the path to the main header of the bRAWcap C API to the include paths.
 In case of our repository structure here this would be `sdk\c\include\`.
