@@ -130,23 +130,25 @@ typedef enum _brawcap_log_type
   /**
    * @brief Generic loggings will be used for everything which has no specific type.
    */
-  BRAWCAP_LOG_TYPE_GENERIC = 0x00,
+  BRAWCAP_LOG_TYPE_GENERIC = 0x01,
   /**
    * @brief Adapter loggings will be used for anything which relates to the local adapter handling.
    */
-  BRAWCAP_LOG_TYPE_ADAPTER = 0x01,
+  BRAWCAP_LOG_TYPE_ADAPTER = 0x02,
   /**
    * @brief Receive loggings will be used for anything which relates to receiving.
    */
-  BRAWCAP_LOG_TYPE_RECEIVE = 0x02,
+  BRAWCAP_LOG_TYPE_RECEIVE = 0x04,
   /**
    * @brief Transmit loggings will be used for anything which relates to transmitting.
    */
-  BRAWCAP_LOG_TYPE_TRANSMIT = 0x04,
+  BRAWCAP_LOG_TYPE_TRANSMIT = 0x08,
   /**
    * @brief License loggings will be used for anything which relates to licensing.
    */
-  BRAWCAP_LOG_TYPE_LICENSE = 0x08
+  BRAWCAP_LOG_TYPE_LICENSE = 0x10,
+  
+  BRAWCAP_LOG_TYPE_ALL = 0xFFFF
 }brawcap_log_type_t;
 
 /**@}*/

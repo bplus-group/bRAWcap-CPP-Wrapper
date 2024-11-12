@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['libbrawcap_2eh_0',['libbrawcap.h',['../libbrawcap_8h.html',1,'']]],
-  ['logging_1',['Logging',['../group__brawcap__logging.html',1,'']]]
+  ['libbrawcap_2eh_0',['libbrawcap.h',['../a00002.html',1,'']]],
+  ['logging_1',['Logging',['../a00060.html',1,'']]]
 ];

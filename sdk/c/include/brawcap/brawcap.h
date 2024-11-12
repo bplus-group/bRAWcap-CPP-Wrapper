@@ -33,13 +33,34 @@ extern "C"
  */
 
 /**
- * @brief Sets the current log level(s) for the given log type(s) to the specified log level(s).
+ * @brief Sets the current log level for the given log type to the specified log level.
  *
- * @param[in] type Log type(s) for which to configure the log level(s).
+ * @param[in] type Log type for which to configure the log level.
+ *
+ * @param[in] level The log level to be applied.
+ *
+ * @param[in] pKey Key required to activate debug logging.
+ * For any other log level than @ref BRAWCAP_LOG_LEVEL_DEBUG this parameter is not required
+ * and should be set to NULL.
+ *
+ * @return
+ * Status                                         | Description
+ * ---------------------------------------------- | -------------------------------------------------------------------
+ * @ref BRAWCAP_STATUS_SUCCESS                    | Success.
+ * @ref BRAWCAP_STATUS_ERROR_NOT_AVAILABLE        | Attempted to enable debug logging with wrong key.
+ * @ref BRAWCAP_STATUS_ERROR_INVALID_PARAM        | None of the specified log types is available.
+ */
+_BRAWCAP_API_FUNC(brawcap_status_t)
+brawcap_log_level_set(const brawcap_log_type_t type, const brawcap_log_level_t level, const char* pKey);
+
+/**
+ * @brief Sets the current log levels for the given log types to the specified log levels.
+ *
+ * @param[in] type Log types for which to configure the log level(s).
  * Value has to be interpreted as bitfield.
  * This allows to (de)activate levels for several types with only one call.
  *
- * @param[in] level The log level to be applied.
+ * @param[in] level The log levels to be applied.
  * Value has to be interpreted as bitfield.
  * This allows to (de)activate several levels with only one call.
  *
@@ -55,7 +76,7 @@ extern "C"
  * @ref BRAWCAP_STATUS_ERROR_INVALID_PARAM        | None of the specified log types is available.
  */
 _BRAWCAP_API_FUNC(brawcap_status_t)
-brawcap_log_level_set(const brawcap_log_type_t type, const brawcap_log_level_t level, const char* pKey);
+brawcap_log_levels_set(const UINT32 type, const UINT32 level, const char* pKey);
 
 /**
  * @brief Reads the level(s) for the given log type.
