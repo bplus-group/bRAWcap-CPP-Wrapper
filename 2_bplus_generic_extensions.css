@@ -192,6 +192,13 @@ html {
   }
 }
 
+@media screen and (min-width: 1000px) {
+  #doc-content > div > div.contents,
+  .PageDoc > div.contents {
+      display: block;
+  }
+}
+
 @media (prefers-color-scheme: dark) {
   html:not(.light-mode) {
       color-scheme: dark;
