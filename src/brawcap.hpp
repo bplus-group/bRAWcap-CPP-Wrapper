@@ -60,6 +60,12 @@ public:
     assert(!BRAWCAP_ERROR(status));
   }
   
+  inline static void LogLevelsSet(const uint32_t type, const uint32_t level, const char* key)
+  {
+    brawcap_status_t status = brawcap_log_levels_set(type, level, key);
+    assert(!BRAWCAP_ERROR(status));
+  }
+  
   inline static brawcap_log_level_t LogLevel(const brawcap_log_type_t type)
   {
     brawcap_log_level_t logLevel;
