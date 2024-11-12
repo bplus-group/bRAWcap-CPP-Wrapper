@@ -30,7 +30,7 @@ industry/automotive environments.
    The bRAWcap C API is located at [`sdk\c\`](https://github.com/bplus-group/bRAWcap-CPP-Wrapper/tree/main/sdk/c).
    In that subdirectory there is everything required for building the bRAWcap C++ wrapper.
    If you want to build your application directly based on the C API there is also a full
-   [**HTML documentation**](https://bplus-group.github.io/bRAWcap-CPP-Wrapper) available.
+   [**HTML documentation**](https://bplus-group.github.io/bRAWcap-CPP-Wrapper/index.html) available.
    The documentation is generated with doxygen and therefore also directly inlined in the C API header files.
 
 ## Building
